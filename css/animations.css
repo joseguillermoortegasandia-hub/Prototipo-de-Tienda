@@ -1,0 +1,975 @@
+/* ============================================================
+   STRIKESTORE — animations.css
+   Pure CSS animations and utility animation classes
+   ============================================================ */
+
+/* ============================================================
+   1. KEYFRAMES
+   ============================================================ */
+
+/* --- Fade --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* --- Fade + Translate --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Slide --- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+}
+
+/* --- Scale --- */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes scaleInCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Bounce In --- */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.02);
+  }
+  80% {
+    transform: translateY(6px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(12px) scale(1.02);
+  }
+  80% {
+    transform: translateY(-6px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes pulseShadow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(222, 58, 13, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(222, 58, 13, 0);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* --- Shimmer (skeleton loading) --- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* --- Spin --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* --- Float (hovering) --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatRotate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+/* --- Gradient Shift --- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientX {
+  0%, 100% { background-position: left center; }
+  50%       { background-position: right center; }
+}
+
+/* --- Count Up (triggers via JS, but CSS sets the stage) --- */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.85);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* --- Shake --- */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%  { transform: translateX(-8px) rotate(-1deg); }
+  30%  { transform: translateX(8px)  rotate(1deg); }
+  45%  { transform: translateX(-6px) rotate(-0.5deg); }
+  60%  { transform: translateX(6px)  rotate(0.5deg); }
+  75%  { transform: translateX(-3px); }
+  90%  { transform: translateX(3px); }
+}
+
+/* --- Wobble --- */
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  15%  { transform: rotate(-8deg); }
+  30%  { transform: rotate(7deg); }
+  45%  { transform: rotate(-5deg); }
+  60%  { transform: rotate(4deg); }
+  75%  { transform: rotate(-2deg); }
+}
+
+/* --- Flip --- */
+@keyframes flipInX {
+  from {
+    transform: perspective(600px) rotateX(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(600px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(600px) rotateY(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(600px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* --- Heartbeat --- */
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.2); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.15); }
+  70%  { transform: scale(1); }
+}
+
+/* --- Ripple --- */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* --- Typewriter cursor --- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- Zoom in/out --- */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* --- Draw line (for SVG-like borders) --- */
+@keyframes drawLine {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* --- Glow pulse --- */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(222, 58, 13, 0.3), 0 0 24px rgba(222, 58, 13, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(222, 58, 13, 0.6), 0 0 48px rgba(222, 58, 13, 0.25);
+  }
+}
+
+/* --- Slide up & fade (for staggered lists) --- */
+@keyframes listItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================================
+   2. ANIMATION UTILITY CLASSES
+   ============================================================ */
+
+/* Core animation base — shared duration & fill-mode */
+[class*="animate-"] {
+  animation-fill-mode: both;
+}
+
+/* --- Fade --- */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.4s ease both;
+}
+
+/* --- Fade + Translate --- */
+.animate-fade-in-up {
+  animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Slide --- */
+.animate-slide-right {
+  animation: slideInRight 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-down {
+  animation: slideInDown 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Scale --- */
+.animate-scale-in {
+  animation: scaleIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-scale-in-center {
+  animation: scaleInCenter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* --- Bounce --- */
+.animate-bounce-in {
+  animation: bounceIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-bounce-in-up {
+  animation: bounceInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-bounce-in-down {
+  animation: bounceInDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* --- Looping --- */
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-pulse-shadow {
+  animation: pulseShadow 2.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-rotate {
+  animation: floatRotate 5s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 4s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 1s linear infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+/* --- One-shot utility --- */
+.animate-shake    { animation: shake 0.55s cubic-bezier(.36,.07,.19,.97) both; }
+.animate-wobble   { animation: wobble 0.75s ease-in-out both; }
+.animate-flip-x   { animation: flipInX 0.5s ease both; }
+.animate-flip-y   { animation: flipInY 0.5s ease both; }
+.animate-zoom-in  { animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-zoom-out { animation: zoomOut 0.3s ease both; }
+.animate-count-up { animation: countUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ============================================================
+   3. DELAY UTILITIES
+   ============================================================ */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+.animate-delay-6 { animation-delay: 0.6s; }
+.animate-delay-7 { animation-delay: 0.7s; }
+.animate-delay-8 { animation-delay: 0.8s; }
+
+/* ============================================================
+   4. DURATION UTILITIES
+   ============================================================ */
+.duration-100 { animation-duration: 0.1s !important; }
+.duration-200 { animation-duration: 0.2s !important; }
+.duration-300 { animation-duration: 0.3s !important; }
+.duration-500 { animation-duration: 0.5s !important; }
+.duration-700 { animation-duration: 0.7s !important; }
+.duration-1000 { animation-duration: 1s !important; }
+.duration-1500 { animation-duration: 1.5s !important; }
+
+/* ============================================================
+   5. REVEAL — Intersection Observer Hook
+   ============================================================ */
+
+/* Base: hidden by default, waiting for .visible class from JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction variants */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-down {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slow reveal for hero/big elements */
+.reveal-slow {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-slow.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   6. STAGGER CHILDREN
+   The parent gets .stagger-children, each child gets a
+   built-in delay by its nth-child index.
+   ============================================================ */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stagger-children.visible > *,
+.stagger-children > *.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Auto-generate delays for up to 12 children */
+.stagger-children > *:nth-child(1)  { transition-delay: 0.05s; }
+.stagger-children > *:nth-child(2)  { transition-delay: 0.12s; }
+.stagger-children > *:nth-child(3)  { transition-delay: 0.19s; }
+.stagger-children > *:nth-child(4)  { transition-delay: 0.26s; }
+.stagger-children > *:nth-child(5)  { transition-delay: 0.33s; }
+.stagger-children > *:nth-child(6)  { transition-delay: 0.40s; }
+.stagger-children > *:nth-child(7)  { transition-delay: 0.47s; }
+.stagger-children > *:nth-child(8)  { transition-delay: 0.54s; }
+.stagger-children > *:nth-child(9)  { transition-delay: 0.61s; }
+.stagger-children > *:nth-child(10) { transition-delay: 0.68s; }
+.stagger-children > *:nth-child(11) { transition-delay: 0.75s; }
+.stagger-children > *:nth-child(12) { transition-delay: 0.82s; }
+
+/* Fast stagger variant */
+.stagger-fast > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stagger-fast.visible > *,
+.stagger-fast > *.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-fast > *:nth-child(1)  { transition-delay: 0.03s; }
+.stagger-fast > *:nth-child(2)  { transition-delay: 0.07s; }
+.stagger-fast > *:nth-child(3)  { transition-delay: 0.11s; }
+.stagger-fast > *:nth-child(4)  { transition-delay: 0.15s; }
+.stagger-fast > *:nth-child(5)  { transition-delay: 0.19s; }
+.stagger-fast > *:nth-child(6)  { transition-delay: 0.23s; }
+.stagger-fast > *:nth-child(7)  { transition-delay: 0.27s; }
+.stagger-fast > *:nth-child(8)  { transition-delay: 0.31s; }
+
+/* ============================================================
+   7. SPECIFIC COMPONENT ANIMATIONS
+   ============================================================ */
+
+/* Navbar scroll transition */
+#navbar {
+  transition:
+    background 350ms ease,
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+/* Product card hover lift */
+.product-card {
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+/* Button press feedback */
+.btn:active {
+  transition: transform 80ms ease !important;
+}
+
+/* Modal animation */
+.modal-content {
+  transition:
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 250ms ease;
+}
+
+/* Category card lift */
+.category-card {
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 250ms ease,
+    filter 250ms ease;
+}
+
+/* Stat card hover */
+.stat-card {
+  transition:
+    transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 250ms ease;
+}
+
+/* Feature card hover */
+.feature-card {
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 250ms ease;
+}
+
+/* Hero content stagger on load */
+.hero-content .hero-eyebrow  { animation: fadeInUp 0.6s 0.1s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-title    { animation: fadeInUp 0.7s 0.25s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-subtitle { animation: fadeInUp 0.65s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-actions  { animation: fadeInUp 0.6s 0.55s cubic-bezier(0.22,1,0.36,1) both; }
+.hero-content .hero-stats    { animation: fadeInUp 0.6s 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* Decorative hero bg elements */
+.hero-bg-element--circle1 { animation: float 8s 0s ease-in-out infinite; }
+.hero-bg-element--circle2 { animation: float 10s 2s ease-in-out infinite; }
+
+/* Auth card entrance */
+.auth-card {
+  animation: fadeInUp 0.65s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.auth-brand-content {
+  animation: fadeInLeft 0.7s 0.05s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* Toast progress bar helper class — JS sets the duration */
+.toast-progress {
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+/* Skeleton shimmer (applied in styles.css via .skeleton class) */
+.skeleton {
+  animation: shimmer 1.6s infinite;
+}
+
+/* Spinner */
+.spinner {
+  animation: spin 0.75s linear infinite;
+}
+
+/* Back to top button entrance */
+.back-to-top {
+  transition:
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 250ms ease,
+    visibility 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* Filter button active press */
+.filter-btn {
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 200ms ease;
+}
+
+/* Nav link underline slide */
+.nav-link::after {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Social link hover lift */
+.social-link {
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease;
+}
+
+/* Table row subtle highlight */
+.data-table tbody tr {
+  transition: background 150ms ease;
+}
+
+/* Table action button pop */
+.table-action-btn {
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Category card icon pop */
+.category-card__icon {
+  transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Mobile menu slide */
+.mobile-menu {
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+}
+
+/* Section header reveal default */
+.section-header {
+  animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* ============================================================
+   8. INTERACTIVE RIPPLE EFFECT
+   Add .ripple-host to any element, then JS inserts .ripple spans
+   ============================================================ */
+.ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: ripple 0.65s linear;
+  pointer-events: none;
+}
+
+/* ============================================================
+   9. REDUCED MOTION SUPPORT
+   Respects user accessibility preferences
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-up,
+  .reveal-down,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-slow {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .stagger-children > *,
+  .stagger-fast > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-content .hero-eyebrow,
+  .hero-content .hero-title,
+  .hero-content .hero-subtitle,
+  .hero-content .hero-actions,
+  .hero-content .hero-stats,
+  .auth-card,
+  .auth-brand-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .skeleton {
+    animation: none !important;
+    background: #e0d8d0 !important;
+  }
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /perfil.html
+
+Sitemap: https://strikestore.com/sitemap.xml

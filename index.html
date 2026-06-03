@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StrikeStore — Equipo de Softball Profesional</title>
+  <meta name="description" content="StrikeStore es tu tienda especializada en equipo de softball. Bates, guantes, cascos, uniformes y todo lo que necesitas para dominar el diamante.">
+  <meta name="keywords" content="softball, equipo softball, bates softball, guantes softball, tienda softball">
+  <meta property="og:title" content="StrikeStore — Equipo de Softball Profesional">
+  <meta property="og:description" content="Tu tienda especializada en equipo de softball profesional.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://strikestore.com/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <div id="toast-container"></div>
+  <nav id="navbar"></nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       1. HERO
+  ════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-label="Bienvenida a StrikeStore">
+    <!-- Decorative elements -->
+    <div class="hero-bg-element hero-bg-element--circle1" aria-hidden="true"></div>
+    <div class="hero-bg-element hero-bg-element--circle2" aria-hidden="true"></div>
+    <div class="hero-bg-element hero-bg-element--line"   aria-hidden="true"></div>
+
+    <!-- Diagonal accent lines -->
+    <div aria-hidden="true" style="
+      position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:1;
+    ">
+      <div style="
+        position:absolute; top:0; right:0;
+        width:55%; height:100%;
+        background: repeating-linear-gradient(
+          -60deg,
+          transparent 0px, transparent 28px,
+          rgba(255,255,255,0.018) 28px, rgba(255,255,255,0.018) 30px
+        );
+      "></div>
+      <!-- Big glowing orb -->
+      <div style="
+        position:absolute; top:-15%; right:-12%;
+        width:520px; height:520px;
+        background: radial-gradient(circle, rgba(222,58,13,0.22) 0%, rgba(225,118,5,0.1) 40%, transparent 70%);
+        border-radius:50%; filter:blur(40px);
+      "></div>
+      <!-- Small blue orb -->
+      <div style="
+        position:absolute; bottom:-10%; left:-8%;
+        width:380px; height:380px;
+        background: radial-gradient(circle, rgba(17,70,100,0.28) 0%, transparent 65%);
+        border-radius:50%; filter:blur(30px);
+      "></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+
+        <!-- Eyebrow -->
+        <div class="hero-eyebrow animate-fade-in-down" style="animation-delay:0.05s">
+          <span>🥎</span>
+          <span>La Tienda #1 de Softball</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="hero-title">
+          TU JUEGO,<br>
+          <span class="highlight">TU EQUIPO.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          En StrikeStore encontrarás todo lo que necesitas para dominar el diamante.
+          Bates, guantes, cascos, uniformes y más — equipo profesional al alcance de todos los atletas.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-actions">
+          <a href="catalogo.html" class="btn btn-primary btn-xl">
+            <i class="fa-solid fa-store"></i>
+            Ver Catálogo
+          </a>
+          <a href="#nosotros" class="btn btn-outline-white btn-xl">
+            <i class="fa-solid fa-circle-info"></i>
+            Conócenos
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats" id="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat__number">
+              <span class="counter" data-target="500">0</span><span style="color:var(--color-secondary)">+</span>
+            </span>
+            <span class="hero-stat__label">Productos</span>
+          </div>
+          <div class="hero-stat__divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat__number">
+              <span class="counter" data-target="10000">0</span><span style="color:var(--color-secondary)">+</span>
+            </span>
+            <span class="hero-stat__label">Atletas</span>
+          </div>
+          <div class="hero-stat__divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat__number">
+              <span class="counter" data-target="5">0</span>
+            </span>
+            <span class="hero-stat__label">Años en el Mercado</span>
+          </div>
+          <div class="hero-stat__divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat__number" style="font-size:clamp(1.4rem,2.5vw,2rem)">
+              <i class="fa-solid fa-bolt" style="color:var(--color-secondary)"></i>
+            </span>
+            <span class="hero-stat__label">Envío Express</span>
+          </div>
+        </div>
+
+      </div><!-- /hero-content -->
+    </div><!-- /container -->
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll__mouse">
+        <div class="hero-scroll__wheel"></div>
+      </div>
+      <span>Explorar</span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       2. CATEGORIES
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="categorias" aria-labelledby="cat-title">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow">
+          <i class="fa-solid fa-grid-2" aria-hidden="true"></i>
+          Explorar por Categoría
+        </span>
+        <h2 class="section-title" id="cat-title">Encuentra Tu Equipo Perfecto</h2>
+        <p class="section-subtitle">
+          Desde bates de alto rendimiento hasta accesorios esenciales —
+          todo organizado para que encuentres lo que buscas en segundos.
+        </p>
+      </div>
+
+      <!-- JS renders category cards here -->
+      <div id="categories-grid" class="category-grid stagger-children" aria-live="polite">
+        <!-- Loading fallback -->
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-xl)" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       3. FEATURED PRODUCTS
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="destacados" aria-labelledby="feat-title"
+    style="background:var(--color-gray-50)">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow">
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
+          Selección de Expertos
+        </span>
+        <h2 class="section-title" id="feat-title">Productos Destacados</h2>
+        <p class="section-subtitle">
+          Elegidos por jugadores que conocen el juego. Lo mejor en rendimiento,
+          calidad y valor para llevar tu nivel al siguiente.
+        </p>
+      </div>
+
+      <!-- JS renders featured product cards here -->
+      <div id="featured-products" class="product-grid stagger-children" aria-live="polite">
+        <!-- Loading skeleton -->
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6 reveal">
+        <a href="catalogo.html" class="btn btn-outline btn-lg">
+          <i class="fa-solid fa-store"></i>
+          Ver Todos los Productos
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       4. NEW ARRIVALS
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="nuevos" aria-labelledby="new-title">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Recién Llegados
+        </span>
+        <h2 class="section-title" id="new-title">Novedades 2025</h2>
+        <p class="section-subtitle">
+          Lo último en equipo de softball. Tecnología de punta y diseños modernos
+          para la temporada más competitiva del año.
+        </p>
+      </div>
+
+      <!-- JS renders new arrival cards here -->
+      <div id="new-arrivals" class="product-grid stagger-children" aria-live="polite">
+        <!-- Loading skeleton -->
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+        <div class="product-card" aria-hidden="true">
+          <div class="skeleton skeleton-img"></div>
+          <div class="product-card__body" style="gap:.75rem">
+            <div class="skeleton skeleton-text" style="width:40%;height:.7em"></div>
+            <div class="skeleton skeleton-text" style="width:85%"></div>
+            <div class="skeleton skeleton-text" style="width:55%;height:.7em"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6 reveal">
+        <a href="catalogo.html?badge=new" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-bolt"></i>
+          Ver Todas las Novedades
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       5. WHY CHOOSE US (dark section)
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="nosotros" aria-labelledby="why-title"
+    style="background:linear-gradient(135deg,#1a1614 0%,#3f4a4b 50%,#114664 100%); position:relative; overflow:hidden;">
+
+    <!-- Decorative background -->
+    <div aria-hidden="true" style="
+      position:absolute; inset:0; pointer-events:none;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0px, transparent 40px,
+        rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 42px
+      );
+    "></div>
+
+    <div class="container" style="position:relative;z-index:1">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow" style="background:rgba(225,118,5,0.15);color:#fb923c">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          Nuestra Promesa
+        </span>
+        <h2 class="section-title text-white" id="why-title">¿Por Qué Elegir StrikeStore?</h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.55)">
+          Más que una tienda — somos jugadores que entienden lo que necesitas
+          para rendir al máximo en cada juego.
+        </p>
+      </div>
+
+      <div class="grid-4 stagger-children reveal">
+
+        <!-- Envío Gratis -->
+        <div class="feature-card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1);">
+          <div class="feature-card__icon" style="background:rgba(222,58,13,0.15); color:#ff7a56;">
+            <i class="fa-solid fa-truck" aria-hidden="true"></i>
+          </div>
+          <h3 class="feature-card__title text-white">Envío Gratis</h3>
+          <p class="feature-card__text" style="color:rgba(255,255,255,0.55);">
+            En pedidos mayores a $150. Entregamos en todo el país con seguimiento en tiempo real.
+          </p>
+        </div>
+
+        <!-- Productos Certificados -->
+        <div class="feature-card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1);">
+          <div class="feature-card__icon" style="background:rgba(225,118,5,0.15); color:#fbbf24;">
+            <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+          </div>
+          <h3 class="feature-card__title text-white">Productos Certificados</h3>
+          <p class="feature-card__text" style="color:rgba(255,255,255,0.55);">
+            Solo marcas reconocidas y aprobadas por ASA, USSSA y NSA. Rendimiento garantizado.
+          </p>
+        </div>
+
+        <!-- Devoluciones Fáciles -->
+        <div class="feature-card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1);">
+          <div class="feature-card__icon" style="background:rgba(17,70,100,0.3); color:#7dd3fc;">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+          </div>
+          <h3 class="feature-card__title text-white">Devoluciones Fáciles</h3>
+          <p class="feature-card__text" style="color:rgba(255,255,255,0.55);">
+            30 días sin preguntas. Si no estás 100% satisfecho, te devolvemos tu dinero.
+          </p>
+        </div>
+
+        <!-- Asesoría Experta -->
+        <div class="feature-card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1);">
+          <div class="feature-card__icon" style="background:rgba(63,74,75,0.5); color:#a3e635;">
+            <i class="fa-solid fa-headset" aria-hidden="true"></i>
+          </div>
+          <h3 class="feature-card__title text-white">Asesoría Experta</h3>
+          <p class="feature-card__text" style="color:rgba(255,255,255,0.55);">
+            Nuestro equipo son jugadores activos que conocen el deporte y te guían en cada compra.
+          </p>
+        </div>
+
+      </div><!-- /grid-4 -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       6. SALE BANNER
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="oferta" aria-labelledby="sale-title" style="overflow:hidden;">
+    <div class="container">
+      <div class="reveal" style="
+        background: linear-gradient(135deg, #de3a0d 0%, #df5911 45%, #e17605 100%);
+        border-radius: var(--radius-2xl);
+        padding: clamp(2.5rem,6vw,4rem) clamp(1.5rem,5vw,4rem);
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 2rem;
+      ">
+        <!-- Decorative stripes -->
+        <div aria-hidden="true" style="
+          position:absolute; inset:0; pointer-events:none;
+          background: repeating-linear-gradient(
+            -45deg,
+            transparent 0px, transparent 20px,
+            rgba(255,255,255,0.05) 20px, rgba(255,255,255,0.05) 22px
+          );
+        "></div>
+        <!-- Big % decorative -->
+        <div aria-hidden="true" style="
+          position:absolute; right:-2rem; top:50%;
+          transform:translateY(-50%);
+          font-family:var(--font-display); font-size:18rem; font-weight:900;
+          color:rgba(255,255,255,0.06); line-height:1; pointer-events:none;
+          user-select:none;
+        ">%</div>
+
+        <div style="position:relative;z-index:1">
+          <div style="
+            display:inline-flex; align-items:center; gap:.5rem;
+            background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35);
+            color:#fff; font-size:.7rem; font-weight:700; letter-spacing:.15em;
+            text-transform:uppercase; padding:.3rem 1rem; border-radius:999px;
+            margin-bottom:1rem;
+          ">
+            <i class="fa-solid fa-fire"></i>
+            Oferta Limitada
+          </div>
+          <h2 class="section-title" id="sale-title" style="
+            color:#fff; font-size:clamp(2rem,6vw,4rem); margin-bottom:.75rem;
+          ">
+            TEMPORADA DE<br>DESCUENTOS
+          </h2>
+          <p style="color:rgba(255,255,255,0.8); font-size:1.05rem; max-width:480px; margin-bottom:0;">
+            Hasta <strong>30% de descuento</strong> en bates, guantes, cascos y más.
+            Equipo de temporada a precios que no se van a repetir.
+          </p>
+        </div>
+
+        <div style="position:relative;z-index:1; display:flex; flex-direction:column; align-items:center; gap:1rem; flex-shrink:0;">
+          <div style="text-align:center">
+            <div style="
+              font-family:var(--font-display); font-size:clamp(5rem,10vw,8rem);
+              color:#fff; line-height:1; letter-spacing:.02em;
+              text-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            ">30<span style="font-size:.45em">%</span></div>
+            <div style="
+              color:rgba(255,255,255,0.75); font-size:.8rem;
+              font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+            ">Descuento máximo</div>
+          </div>
+          <a href="catalogo.html?badge=sale" class="btn btn-xl" style="
+            background:#fff; color:var(--color-primary);
+            box-shadow:0 8px 32px rgba(0,0,0,0.25);
+            font-weight:700;
+          ">
+            <i class="fa-solid fa-tag"></i>
+            Ver Ofertas
+          </a>
+        </div>
+
+      </div><!-- /banner card -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       7. TESTIMONIALS
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="testimonios" aria-labelledby="testi-title"
+    style="background:linear-gradient(135deg,#1a1614 0%,#114664 100%); overflow:hidden; position:relative;">
+
+    <div aria-hidden="true" style="
+      position:absolute; inset:0; pointer-events:none;
+      background: radial-gradient(ellipse at 80% 50%, rgba(222,58,13,0.1) 0%, transparent 55%);
+    "></div>
+
+    <div class="container" style="position:relative;z-index:1">
+
+      <div class="section-header reveal">
+        <span class="section-eyebrow" style="background:rgba(225,118,5,0.15);color:#fb923c">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i>
+          Lo Que Dicen Nuestros Jugadores
+        </span>
+        <h2 class="section-title text-white" id="testi-title">Resultados en el Diamante</h2>
+      </div>
+
+      <div class="grid-3 stagger-children reveal">
+
+        <!-- Testimonial 1 -->
+        <article class="card-glass" style="padding:2rem; border-radius:var(--radius-xl);">
+          <div style="display:flex; gap:.25rem; color:#f59e0b; font-size:.9rem; margin-bottom:1rem;">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p style="color:rgba(255,255,255,0.75); font-size:.95rem; line-height:1.75; margin-bottom:1.5rem; font-style:italic;">
+            "Desde que conseguí mi bate Louisville Slugger en StrikeStore, mis números
+            en el plato mejoraron drásticamente. La calidad y el precio no tienen comparación."
+          </p>
+          <div style="display:flex; align-items:center; gap:.875rem;">
+            <div style="
+              width:46px; height:46px; border-radius:50%;
+              background:linear-gradient(135deg,#de3a0d,#e17605);
+              display:flex; align-items:center; justify-content:center;
+              font-family:var(--font-display); font-size:1.1rem; color:#fff;
+              font-weight:700; flex-shrink:0;
+            ">CR</div>
+            <div>
+              <div style="color:#f1f5f9; font-weight:700; font-size:.9rem;">Carlos Ríos</div>
+              <div style="color:rgba(255,255,255,0.45); font-size:.78rem;">Bateador, Liga Municipal de CDMX</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonial 2 -->
+        <article class="card-glass" style="padding:2rem; border-radius:var(--radius-xl);">
+          <div style="display:flex; gap:.25rem; color:#f59e0b; font-size:.9rem; margin-bottom:1rem;">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p style="color:rgba(255,255,255,0.75); font-size:.95rem; line-height:1.75; margin-bottom:1.5rem; font-style:italic;">
+            "El guante Wilson A2000 que compré aquí es el mejor que he tenido.
+            El equipo de StrikeStore me asesoró perfecto para elegir la talla correcta."
+          </p>
+          <div style="display:flex; align-items:center; gap:.875rem;">
+            <div style="
+              width:46px; height:46px; border-radius:50%;
+              background:linear-gradient(135deg,#114664,#3f4a4b);
+              display:flex; align-items:center; justify-content:center;
+              font-family:var(--font-display); font-size:1.1rem; color:#fff;
+              font-weight:700; flex-shrink:0;
+            ">MV</div>
+            <div>
+              <div style="color:#f1f5f9; font-weight:700; font-size:.9rem;">Mariana Vásquez</div>
+              <div style="color:rgba(255,255,255,0.45); font-size:.78rem;">Shortstop, Equipo Femenino Tigres</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Testimonial 3 -->
+        <article class="card-glass" style="padding:2rem; border-radius:var(--radius-xl);">
+          <div style="display:flex; gap:.25rem; color:#f59e0b; font-size:.9rem; margin-bottom:1rem;">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p style="color:rgba(255,255,255,0.75); font-size:.95rem; line-height:1.75; margin-bottom:1.5rem; font-style:italic;">
+            "Compré uniformes completos para todo mi equipo y llegaron en tiempo récord.
+            La calidad del tejido es excelente y el diseño es espectacular."
+          </p>
+          <div style="display:flex; align-items:center; gap:.875rem;">
+            <div style="
+              width:46px; height:46px; border-radius:50%;
+              background:linear-gradient(135deg,#df5911,#114664);
+              display:flex; align-items:center; justify-content:center;
+              font-family:var(--font-display); font-size:1.1rem; color:#fff;
+              font-weight:700; flex-shrink:0;
+            ">JM</div>
+            <div>
+              <div style="color:#f1f5f9; font-weight:700; font-size:.9rem;">Jorge Mendoza</div>
+              <div style="color:rgba(255,255,255,0.45); font-size:.78rem;">Manager, Club Diablos Rojos</div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /grid-3 -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       8. NEWSLETTER
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="newsletter" aria-labelledby="news-title">
+    <div class="container">
+
+      <div class="reveal" style="
+        background: var(--color-white);
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-xl);
+        padding: clamp(2.5rem,6vw,4rem);
+        text-align: center;
+        max-width: 680px;
+        margin-inline: auto;
+        border: 1px solid var(--color-gray-100);
+        position: relative;
+        overflow: hidden;
+      ">
+        <!-- Subtle top accent -->
+        <div aria-hidden="true" style="
+          position:absolute; top:0; left:0; right:0; height:4px;
+          background:var(--gradient-primary);
+        "></div>
+
+        <div style="
+          width:64px; height:64px; border-radius:var(--radius-lg);
+          background:rgba(222,58,13,0.08); color:var(--color-primary);
+          display:flex; align-items:center; justify-content:center;
+          font-size:1.75rem; margin:0 auto 1.5rem;
+        ">
+          <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+        </div>
+
+        <span class="section-eyebrow">Mantente al Día</span>
+        <h2 class="section-title" id="news-title" style="margin-bottom:.75rem">
+          Únete a la Comunidad StrikeStore
+        </h2>
+        <p style="color:var(--color-gray-600); margin-bottom:2rem; font-size:1.05rem; max-width:480px; margin-inline:auto;">
+          Recibe primero las novedades, ofertas exclusivas y consejos de entrenamiento
+          directamente en tu correo.
+        </p>
+
+        <form id="newsletter-form" novalidate
+          style="display:flex; gap:.75rem; max-width:480px; margin-inline:auto; flex-wrap:wrap;">
+          <div class="input-with-icon" style="flex:1; min-width:220px;">
+            <span class="input-icon" aria-hidden="true">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <input
+              type="email"
+              id="newsletter-email"
+              class="form-input"
+              placeholder="tu@correo.com"
+              autocomplete="email"
+              aria-label="Correo electrónico para el boletín"
+              required
+            >
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="white-space:nowrap; flex-shrink:0;">
+            <i class="fa-solid fa-paper-plane"></i>
+            Suscribirme
+          </button>
+        </form>
+
+        <p style="margin-top:1rem; font-size:.8rem; color:var(--color-gray-400);">
+          <i class="fa-solid fa-lock" aria-hidden="true"></i>
+          Sin spam. Cancela cuando quieras.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       9. FOOTER
+  ════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <div class="footer-brand__logo">
+            <div style="
+              width:40px; height:40px; border-radius:10px;
+              background:var(--gradient-primary);
+              display:flex; align-items:center; justify-content:center;
+              font-size:1.3rem; box-shadow:var(--shadow-primary);
+              flex-shrink:0;
+            " aria-hidden="true">🥎</div>
+            <span class="footer-brand__name">StrikeStore</span>
+          </div>
+          <p class="footer-brand__description">
+            Tu tienda especializada en equipo de softball profesional.
+            Cinco años impulsando el talento de atletas en todo el país.
+          </p>
+          <div class="footer-brand__social" aria-label="Redes sociales">
+            <a href="#" class="social-link" aria-label="Facebook de StrikeStore">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram de StrikeStore">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="X (Twitter) de StrikeStore">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube de StrikeStore">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tienda Column -->
+        <div>
+          <h3 class="footer-col__title">Tienda</h3>
+          <ul class="footer-links" role="list">
+            <li>
+              <a href="catalogo.html" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Catálogo Completo
+              </a>
+            </li>
+            <li>
+              <a href="catalogo.html?badge=new" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Novedades 2025
+              </a>
+            </li>
+            <li>
+              <a href="catalogo.html?badge=sale" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Ofertas y Descuentos
+              </a>
+            </li>
+            <li>
+              <a href="catalogo.html?badge=featured" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Productos Destacados
+              </a>
+            </li>
+            <li>
+              <a href="catalogo.html?categoria=bates" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Bates
+              </a>
+            </li>
+            <li>
+              <a href="catalogo.html?categoria=guantes" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Guantes
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Soporte Column -->
+        <div>
+          <h3 class="footer-col__title">Soporte</h3>
+          <ul class="footer-links" role="list">
+            <li>
+              <a href="#" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Centro de Ayuda
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Política de Envíos
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Devoluciones
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Guía de Tallas
+              </a>
+            </li>
+            <li>
+              <a href="registro.html" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Crear Cuenta
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="footer-link">
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                Iniciar Sesión
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contacto Column -->
+        <div>
+          <h3 class="footer-col__title">Contacto</h3>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>Av. del Deporte #1250, Col. Deportiva, CDMX, México</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>+52 (55) 1234-5678</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>hola@strikestore.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Lunes a Viernes: 9am – 7pm<br>Sábados: 10am – 4pm</span>
+          </div>
+        </div>
+
+      </div><!-- /footer-grid -->
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          &copy; 2025 <span>StrikeStore</span>. Todos los derechos reservados.
+          Hecho con <span style="color:var(--color-primary)">♥</span> para la comunidad de softball.
+        </p>
+        <div class="footer-bottom__links" role="navigation" aria-label="Legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos de Uso</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Volver al inicio">
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/home.js"></script>
+
+</body>
+</html>

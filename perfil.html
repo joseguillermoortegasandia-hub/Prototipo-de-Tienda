@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil | StrikeStore</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Gestiona tu perfil y cuenta en StrikeStore.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    /* ── Profile page extras ── */
+
+    /* Avatar XL en header */
+    .avatar-circle {
+      width: 80px; height: 80px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-white);
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 32px rgba(222,58,13,0.4);
+      border: 4px solid rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    .avatar-circle.avatar-xl {
+      width: 100px; height: 100px;
+      font-size: 2.5rem;
+      margin-inline: auto;
+    }
+
+    /* Profile header banner */
+    .profile-header {
+      background: var(--gradient-hero);
+      padding-top: calc(var(--navbar-h) + var(--space-12));
+      padding-bottom: var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(222,58,13,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Decorative stripes */
+    .profile-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        -60deg,
+        transparent 0px, transparent 28px,
+        rgba(255,255,255,0.012) 28px, rgba(255,255,255,0.012) 30px
+      );
+    }
+
+    .profile-header__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .profile-header__info h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      color: var(--color-white);
+      letter-spacing: 0.03em;
+      margin-bottom: var(--space-1);
+    }
+
+    .profile-header__info .text-muted {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .profile-badges {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Badge variants */
+    .badge          { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.65rem; border-radius: var(--radius-full); }
+    .badge-primary  { background: rgba(222,58,13,0.18); color: var(--color-primary); border: 1px solid rgba(222,58,13,0.3); }
+    .badge-info     { background: rgba(17,70,100,0.18); color: #7dd3fc; border: 1px solid rgba(17,70,100,0.3); }
+    .badge-success  { background: rgba(22,163,74,0.15); color: #4ade80; border: 1px solid rgba(22,163,74,0.25); }
+
+    /* Profile layout grid */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .profile-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Sidebar card */
+    .profile-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-gray-100);
+      padding: var(--space-8) var(--space-6);
+      text-align: center;
+      position: sticky;
+      top: calc(var(--navbar-h) + var(--space-4));
+    }
+
+    .profile-card__avatar {
+      margin-bottom: var(--space-4);
+    }
+
+    .profile-card__avatar .avatar-circle {
+      margin-inline: auto;
+    }
+
+    .profile-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--color-dark);
+      letter-spacing: 0.03em;
+      margin-bottom: var(--space-1);
+    }
+
+    .profile-card .text-muted { font-size: 0.82rem; color: var(--color-gray-400); margin-bottom: var(--space-5); }
+
+    .profile-stats {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+      border-top: 1px solid var(--color-gray-100);
+      padding-top: var(--space-5);
+    }
+
+    .profile-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+    }
+
+    .profile-stat__label { font-size: 0.78rem; color: var(--color-gray-400); font-weight: 500; }
+    .profile-stat__value { font-size: 0.82rem; font-weight: 600; color: var(--color-dark); }
+
+    .btn-block { width: 100%; justify-content: center; }
+
+    /* Tabs */
+    .profile-tabs {
+      display: flex;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-gray-100);
+      flex-wrap: wrap;
+    }
+
+    .profile-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.625rem var(--space-5);
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-gray-600);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition-base), color var(--transition-base);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .profile-tab:hover {
+      background: var(--color-gray-50);
+      color: var(--color-dark);
+    }
+
+    .profile-tab.active {
+      background: var(--gradient-primary);
+      color: var(--color-white);
+      box-shadow: 0 4px 16px rgba(222,58,13,0.3);
+    }
+
+    .profile-tab i { font-size: 0.9rem; }
+
+    /* Section cards */
+    .profile-section {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-gray-100);
+      padding: var(--space-8);
+    }
+
+    .profile-section__header {
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-gray-100);
+    }
+
+    .profile-section__header h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--color-dark);
+      letter-spacing: 0.03em;
+      margin-bottom: var(--space-1);
+    }
+
+    .profile-section__header p { font-size: 0.85rem; color: var(--color-gray-400); }
+
+    /* Form overrides */
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin-bottom: var(--space-5);
+    }
+
+    @media (max-width: 620px) { .form__row { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: var(--space-1); }
+    .form-hint  { font-size: 0.75rem; color: var(--color-gray-400); }
+
+    /* Input with icon */
+    .input-with-icon {
+      position: relative;
+    }
+
+    .input-with-icon .input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-gray-400);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    .input-with-icon .form-input,
+    .input-with-icon .form-textarea {
+      padding-left: 2.25rem;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: var(--space-4);
+      padding-top: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    /* Password strength */
+    .password-strength {
+      margin-top: var(--space-2);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .strength-bar {
+      flex: 1;
+      height: 5px;
+      background: var(--color-gray-100);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .strength-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      min-width: 80px;
+    }
+
+    /* Disabled input look */
+    .form-input:disabled {
+      background: var(--color-gray-50);
+      cursor: not-allowed;
+      color: var(--color-gray-400);
+    }
+
+    /* Button spinner */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toast-container"></div>
+  <nav id="navbar"></nav>
+
+  <!-- ═══════════════════════════════════
+       PROFILE HEADER BANNER
+  ════════════════════════════════════ -->
+  <div class="profile-header">
+    <div class="container">
+      <div class="profile-header__content">
+
+        <!-- Avatar grande -->
+        <div id="profile-avatar-display"></div>
+
+        <!-- Info del usuario -->
+        <div class="profile-header__info">
+          <h1 id="profile-name-display">Cargando...</h1>
+          <p id="profile-email-display" class="text-muted"></p>
+          <div class="profile-badges">
+            <span class="badge" id="profile-role-badge"></span>
+            <span class="badge badge-success" id="profile-member-since"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════ -->
+  <main class="section section-sm" style="padding-top:var(--space-10);">
+    <div class="container">
+      <div class="profile-grid">
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="profile-sidebar">
+          <div class="card profile-card">
+
+            <!-- Avatar sidebar -->
+            <div class="profile-card__avatar" id="sidebar-avatar"></div>
+            <h3 id="sidebar-name"></h3>
+            <p id="sidebar-role" class="text-muted"></p>
+
+            <!-- Estadísticas -->
+            <div class="profile-stats">
+              <div class="profile-stat">
+                <span class="profile-stat__label">Miembro desde</span>
+                <span class="profile-stat__value" id="stat-member-since"></span>
+              </div>
+              <div class="profile-stat">
+                <span class="profile-stat__label">Estado de cuenta</span>
+                <span class="profile-stat__value" style="color:#16a34a;">
+                  <i class="fa-solid fa-circle-check" style="font-size:.7rem;"></i> Activa
+                </span>
+              </div>
+            </div>
+
+            <!-- CTA buttons -->
+            <a href="catalogo.html" class="btn btn-primary btn-block" style="margin-top:var(--space-4);">
+              <i class="fa-solid fa-store"></i> Ir al Catálogo
+            </a>
+            <div id="admin-link-wrapper" style="display:none; margin-top:var(--space-2);">
+              <a href="admin.html" class="btn btn-secondary btn-block">
+                <i class="fa-solid fa-gauge-high"></i> Panel Admin
+              </a>
+            </div>
+            <button onclick="Auth.logout()" class="btn btn-outline btn-block" style="margin-top:var(--space-2);">
+              <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+            </button>
+
+          </div>
+        </aside>
+
+        <!-- ── MAIN FORMS ── -->
+        <div class="profile-main">
+
+          <!-- Tab navigation -->
+          <div class="profile-tabs" role="tablist">
+            <button class="profile-tab active" data-tab="info" onclick="switchTab('info')" role="tab" aria-selected="true">
+              <i class="fa-solid fa-user"></i> Información Personal
+            </button>
+            <button class="profile-tab" data-tab="password" onclick="switchTab('password')" role="tab" aria-selected="false">
+              <i class="fa-solid fa-lock"></i> Cambiar Contraseña
+            </button>
+          </div>
+
+          <!-- ── TAB: INFORMACIÓN PERSONAL ── -->
+          <div id="tab-info" class="profile-tab-content profile-section" role="tabpanel">
+            <div class="profile-section__header">
+              <h2>Información Personal</h2>
+              <p>Actualiza tu información de perfil en cualquier momento</p>
+            </div>
+
+            <form id="profile-form" novalidate>
+              <div class="form__row">
+                <div class="form-group">
+                  <label class="form-label" for="prof-name">Nombre Completo *</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="prof-name" class="form-input" placeholder="Tu nombre completo" autocomplete="name">
+                  </div>
+                  <span class="form-error" id="prof-name-error"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Correo Electrónico</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="prof-email" class="form-input" disabled autocomplete="email">
+                  </div>
+                  <span class="form-hint"><i class="fa-solid fa-lock" style="font-size:.65rem;"></i> El correo no puede modificarse</span>
+                </div>
+              </div>
+
+              <div class="form__row">
+                <div class="form-group">
+                  <label class="form-label" for="prof-phone">Teléfono</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-phone input-icon"></i>
+                    <input type="tel" id="prof-phone" class="form-input" placeholder="+52 (55) 0000-0000" autocomplete="tel">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prof-city">Ciudad / Estado</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-location-dot input-icon"></i>
+                    <input type="text" id="prof-city" class="form-input" placeholder="Ciudad de México" autocomplete="address-level2">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="prof-bio">Bio</label>
+                <div style="position:relative;">
+                  <textarea id="prof-bio" class="form-textarea" rows="3"
+                    placeholder="Cuéntanos sobre ti, tu posición en el campo, equipo favorito..."
+                    maxlength="200"
+                    style="padding-top:.75rem;"></textarea>
+                </div>
+                <span class="form-hint"><span id="bio-char-count">0</span>/200 caracteres</span>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="profile-submit-btn">
+                  <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+                </button>
+                <button type="button" class="btn btn-outline btn-lg" onclick="loadUserData()">
+                  <i class="fa-solid fa-rotate-left"></i> Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- ── TAB: CAMBIAR CONTRASEÑA ── -->
+          <div id="tab-password" class="profile-tab-content profile-section" style="display:none;" role="tabpanel">
+            <div class="profile-section__header">
+              <h2>Cambiar Contraseña</h2>
+              <p>Mantén tu cuenta segura con una contraseña robusta</p>
+            </div>
+
+            <form id="password-form" novalidate style="max-width:480px;">
+
+              <div class="form-group" style="margin-bottom:var(--space-5);">
+                <label class="form-label" for="current-pwd">Contraseña Actual *</label>
+                <div class="input-with-icon" style="position:relative;">
+                  <i class="fa-solid fa-lock input-icon"></i>
+                  <input type="password" id="current-pwd" class="form-input" placeholder="Tu contraseña actual" autocomplete="current-password" style="padding-right:3rem;">
+                  <button type="button" class="toggle-pwd-btn" data-target="current-pwd" aria-label="Mostrar contraseña"
+                    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-gray-400);font-size:.85rem;padding:.2rem;">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <span class="form-error" id="current-pwd-error"></span>
+              </div>
+
+              <div class="form-group" style="margin-bottom:var(--space-5);">
+                <label class="form-label" for="new-pwd">Nueva Contraseña *</label>
+                <div class="input-with-icon" style="position:relative;">
+                  <i class="fa-solid fa-lock input-icon"></i>
+                  <input type="password" id="new-pwd" class="form-input" placeholder="Mínimo 8 caracteres con al menos 1 número" autocomplete="new-password" style="padding-right:3rem;">
+                  <button type="button" class="toggle-pwd-btn" data-target="new-pwd" aria-label="Mostrar contraseña"
+                    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-gray-400);font-size:.85rem;padding:.2rem;">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <span class="form-error" id="new-pwd-error"></span>
+                <!-- Barra de fortaleza -->
+                <div class="password-strength">
+                  <div class="strength-bar">
+                    <div id="strength-fill" class="strength-fill"></div>
+                  </div>
+                  <span id="strength-label" class="strength-label"></span>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="confirm-pwd">Confirmar Nueva Contraseña *</label>
+                <div class="input-with-icon" style="position:relative;">
+                  <i class="fa-solid fa-lock input-icon"></i>
+                  <input type="password" id="confirm-pwd" class="form-input" placeholder="Repite la nueva contraseña" autocomplete="new-password" style="padding-right:3rem;">
+                  <button type="button" class="toggle-pwd-btn" data-target="confirm-pwd" aria-label="Mostrar contraseña"
+                    style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-gray-400);font-size:.85rem;padding:.2rem;">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <span class="form-error" id="confirm-pwd-error"></span>
+              </div>
+
+              <!-- Requisitos -->
+              <div style="margin-top:var(--space-4);background:var(--color-gray-50);border-radius:var(--radius-md);padding:var(--space-4);">
+                <p style="font-size:.75rem;font-weight:700;color:var(--color-gray-600);margin-bottom:var(--space-2);text-transform:uppercase;letter-spacing:.08em;">Requisitos</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--space-1);">
+                  <li id="req-length" style="font-size:.78rem;color:var(--color-gray-400);display:flex;align-items:center;gap:var(--space-2);">
+                    <i class="fa-regular fa-circle-dot" style="font-size:.65rem;flex-shrink:0;"></i> Mínimo 8 caracteres
+                  </li>
+                  <li id="req-number" style="font-size:.78rem;color:var(--color-gray-400);display:flex;align-items:center;gap:var(--space-2);">
+                    <i class="fa-regular fa-circle-dot" style="font-size:.65rem;flex-shrink:0;"></i> Al menos un número
+                  </li>
+                  <li id="req-upper" style="font-size:.78rem;color:var(--color-gray-400);display:flex;align-items:center;gap:var(--space-2);">
+                    <i class="fa-regular fa-circle-dot" style="font-size:.65rem;flex-shrink:0;"></i> Al menos una mayúscula
+                  </li>
+                  <li id="req-special" style="font-size:.78rem;color:var(--color-gray-400);display:flex;align-items:center;gap:var(--space-2);">
+                    <i class="fa-regular fa-circle-dot" style="font-size:.65rem;flex-shrink:0;"></i> Carácter especial (!@#$...)
+                  </li>
+                </ul>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="pwd-submit-btn">
+                  <i class="fa-solid fa-key"></i> Cambiar Contraseña
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div><!-- /profile-main -->
+      </div><!-- /profile-grid -->
+    </div><!-- /container -->
+  </main>
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-brand__logo">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:var(--shadow-primary);flex-shrink:0;" aria-hidden="true">🥎</div>
+            <span class="footer-brand__name">StrikeStore</span>
+          </div>
+          <p class="footer-brand__description">
+            Tu tienda especializada en equipo de softball profesional. Cinco años impulsando el talento de atletas en todo el país.
+          </p>
+          <div class="footer-brand__social" aria-label="Redes sociales">
+            <a href="#" class="social-link" aria-label="Facebook de StrikeStore"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram de StrikeStore"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="X de StrikeStore"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube de StrikeStore"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Tienda -->
+        <div>
+          <h3 class="footer-col__title">Tienda</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="catalogo.html" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Catálogo Completo</a></li>
+            <li><a href="catalogo.html?badge=new" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Novedades 2025</a></li>
+            <li><a href="catalogo.html?badge=sale" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Ofertas y Descuentos</a></li>
+            <li><a href="catalogo.html?badge=featured" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Productos Destacados</a></li>
+            <li><a href="catalogo.html?categoria=bates" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Bates</a></li>
+            <li><a href="catalogo.html?categoria=guantes" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Guantes</a></li>
+          </ul>
+        </div>
+
+        <!-- Soporte -->
+        <div>
+          <h3 class="footer-col__title">Soporte</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Centro de Ayuda</a></li>
+            <li><a href="#" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Política de Envíos</a></li>
+            <li><a href="#" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Devoluciones</a></li>
+            <li><a href="#" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Guía de Tallas</a></li>
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Inicio</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h3 class="footer-col__title">Contacto</h3>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>Av. del Deporte #1250, Col. Deportiva, CDMX, México</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>+52 (55) 1234-5678</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>hola@strikestore.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Lunes a Viernes: 9am – 7pm<br>Sábados: 10am – 4pm</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          &copy; 2025 <span>StrikeStore</span>. Todos los derechos reservados.
+          Hecho con <span style="color:var(--color-primary)">♥</span> para la comunidad de softball.
+        </p>
+        <div class="footer-bottom__links" role="navigation" aria-label="Legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos de Uso</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Volver al inicio">
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

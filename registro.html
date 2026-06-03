@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear Cuenta | StrikeStore</title>
+  <meta name="description" content="Crea tu cuenta en StrikeStore. Únete a miles de jugadores de softball." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <style>
+    /* ── Registro page overrides ── */
+    .auth-form-side {
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    /* Brand side — verde alternativo */
+    .auth-brand {
+      background: linear-gradient(160deg, #1a1614 0%, #114664 45%, #3f4a4b 100%);
+    }
+
+    /* Decorative orbs */
+    .auth-deco-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .auth-deco-orb--1 {
+      width: 380px; height: 380px;
+      top: -80px; left: -100px;
+      background: radial-gradient(circle, rgba(17,70,100,0.3) 0%, transparent 70%);
+    }
+    .auth-deco-orb--2 {
+      width: 300px; height: 300px;
+      bottom: -80px; right: -60px;
+      background: radial-gradient(circle, rgba(222,58,13,0.2) 0%, transparent 70%);
+    }
+    .auth-deco-orb--3 {
+      width: 200px; height: 200px;
+      top: 40%; right: 10%;
+      background: radial-gradient(circle, rgba(225,118,5,0.15) 0%, transparent 70%);
+    }
+    .auth-deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .auth-deco-circle--lg {
+      width: 500px; height: 500px;
+      border: 1px solid rgba(255,255,255,0.05);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .auth-deco-circle--sm {
+      width: 220px; height: 220px;
+      border: 1px solid rgba(17,70,100,0.3);
+      top: 15%; right: 8%;
+    }
+    .auth-deco-line {
+      position: absolute;
+      pointer-events: none;
+    }
+    .auth-deco-line--h {
+      height: 1px;
+      width: 45%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+      top: 35%; left: 10%;
+    }
+    .auth-deco-line--h2 {
+      height: 1px;
+      width: 30%;
+      background: linear-gradient(to right, transparent, rgba(17,70,100,0.4), transparent);
+      bottom: 28%; right: 5%;
+    }
+
+    /* Brand tagline */
+    .auth-brand-tagline {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      background: rgba(17,70,100,0.25);
+      border: 1px solid rgba(17,70,100,0.5);
+      padding: 0.35rem 0.875rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-5);
+    }
+
+    .auth-brand-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--color-white);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-4);
+    }
+    .auth-brand-headline .hl-blue {
+      color: #7dd3fc;
+    }
+    .auth-brand-headline .hl-fire {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .auth-brand-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+
+    /* Benefit list */
+    .auth-benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      text-align: left;
+      margin-bottom: var(--space-8);
+    }
+    .auth-benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .auth-benefit-icon {
+      width: 38px; height: 38px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .auth-benefit-icon--primary { background: rgba(222,58,13,0.15); color: var(--color-secondary); border: 1px solid rgba(222,58,13,0.2); }
+    .auth-benefit-icon--blue    { background: rgba(17,70,100,0.25); color: #7dd3fc; border: 1px solid rgba(17,70,100,0.35); }
+    .auth-benefit-icon--accent  { background: rgba(225,118,5,0.15); color: var(--color-accent); border: 1px solid rgba(225,118,5,0.2); }
+    .auth-benefit-icon--teal    { background: rgba(17,100,80,0.2); color: #34d399; border: 1px solid rgba(17,100,80,0.3); }
+    .auth-benefit-text strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 2px;
+    }
+    .auth-benefit-text span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.5;
+    }
+
+    /* Stats strip */
+    .auth-stats-strip {
+      display: flex;
+      gap: var(--space-5);
+      padding-top: var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      justify-content: space-around;
+    }
+    .auth-stat {
+      text-align: center;
+    }
+    .auth-stat__num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--color-white);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .auth-stat__num span { color: var(--color-secondary); }
+    .auth-stat__lbl {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.42);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-top: 3px;
+    }
+
+    /* Password strength indicator */
+    .password-strength {
+      margin-top: var(--space-2);
+    }
+    .password-strength__bars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .strength-bar {
+      height: 4px;
+      flex: 1;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-200);
+      transition: background var(--transition-base);
+    }
+    .strength-bar.active-weak   { background: #ef4444; }
+    .strength-bar.active-fair   { background: #f59e0b; }
+    .strength-bar.active-good   { background: #3b82f6; }
+    .strength-bar.active-strong { background: #22c55e; }
+    .password-strength__label {
+      font-size: 0.75rem;
+      color: var(--color-gray-400);
+      font-weight: 500;
+    }
+    .strength-label--weak   { color: #ef4444; }
+    .strength-label--fair   { color: #f59e0b; }
+    .strength-label--good   { color: #3b82f6; }
+    .strength-label--strong { color: #22c55e; }
+
+    /* Terms link */
+    .terms-link {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+      transition: color var(--transition-base);
+    }
+    .terms-link:hover { color: var(--color-secondary); }
+
+    /* Spinner */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .btn-spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* Password toggle */
+    .input-icon-right {
+      background: none;
+      border: none;
+    }
+
+    /* Form responsive adjustments */
+    @media (max-width: 640px) {
+      .auth-form-side { max-height: none; overflow: visible; }
+      body { overflow-y: auto; }
+      .form__row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar placeholder (nav.js lo inyecta) -->
+  <nav id="navbar" aria-label="Navegación principal"></nav>
+
+  <!-- ================================================================
+       AUTH PAGE — SPLIT LAYOUT
+       ================================================================ -->
+  <main class="auth-page" id="main-content" role="main">
+    <div class="auth-split">
+
+      <!-- ============================================================
+           LADO IZQUIERDO — BRAND / BENEFICIOS (oculto en móvil)
+           ============================================================ -->
+      <aside class="auth-brand" aria-hidden="true">
+        <!-- Decorative elements -->
+        <div class="auth-deco-orb auth-deco-orb--1"></div>
+        <div class="auth-deco-orb auth-deco-orb--2"></div>
+        <div class="auth-deco-orb auth-deco-orb--3"></div>
+        <div class="auth-deco-circle auth-deco-circle--lg"></div>
+        <div class="auth-deco-circle auth-deco-circle--sm"></div>
+        <div class="auth-deco-line auth-deco-line--h"></div>
+        <div class="auth-deco-line auth-deco-line--h2"></div>
+
+        <div class="auth-brand-content">
+          <!-- Logo grande -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:var(--space-6)">
+            <div style="width:56px;height:56px;background:var(--gradient-primary);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;box-shadow:0 8px 32px rgba(222,58,13,0.4)">🥎</div>
+            <span style="font-family:var(--font-display);font-size:2.4rem;letter-spacing:0.04em;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">StrikeStore</span>
+          </div>
+
+          <!-- Tagline eyebrow -->
+          <span class="auth-brand-tagline">Comunidad de Softball</span>
+
+          <!-- Headline -->
+          <h1 class="auth-brand-headline">
+            ÚNETE A LA<br/>
+            <span class="hl-blue">COMUNIDAD</span><br/>
+            <span class="hl-fire">STRIKESTORE</span>
+          </h1>
+
+          <p class="auth-brand-desc">
+            Miles de jugadores ya confían en nosotros para elevar su juego. Regístrate y accede a beneficios exclusivos.
+          </p>
+
+          <!-- Benefits list -->
+          <ul class="auth-benefit-list" role="list">
+            <li class="auth-benefit-item">
+              <div class="auth-benefit-icon auth-benefit-icon--primary" aria-hidden="true">
+                <i class="fa-solid fa-percent"></i>
+              </div>
+              <div class="auth-benefit-text">
+                <strong>Descuentos exclusivos para miembros</strong>
+                <span>Hasta 30% en productos seleccionados y ofertas semanales</span>
+              </div>
+            </li>
+            <li class="auth-benefit-item">
+              <div class="auth-benefit-icon auth-benefit-icon--blue" aria-hidden="true">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div class="auth-benefit-text">
+                <strong>Seguimiento de pedidos en tiempo real</strong>
+                <span>Rastrea tu pedido desde el almacén hasta tu puerta</span>
+              </div>
+            </li>
+            <li class="auth-benefit-item">
+              <div class="auth-benefit-icon auth-benefit-icon--accent" aria-hidden="true">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="auth-benefit-text">
+                <strong>Catálogo completo de equipamiento</strong>
+                <span>Bates, guantes, cascos, uniformes y mucho más</span>
+              </div>
+            </li>
+            <li class="auth-benefit-item">
+              <div class="auth-benefit-icon auth-benefit-icon--teal" aria-hidden="true">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="auth-benefit-text">
+                <strong>Asesoría personalizada de expertos</strong>
+                <span>Nuestro equipo te ayuda a elegir el equipo ideal</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Stats strip -->
+          <div class="auth-stats-strip" aria-label="Estadísticas de StrikeStore">
+            <div class="auth-stat">
+              <div class="auth-stat__num">5<span>k+</span></div>
+              <div class="auth-stat__lbl">Miembros</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__num">200<span>+</span></div>
+              <div class="auth-stat__lbl">Productos</div>
+            </div>
+            <div class="auth-stat">
+              <div class="auth-stat__num">4.<span>9</span></div>
+              <div class="auth-stat__lbl">Calificación</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ============================================================
+           LADO DERECHO — FORMULARIO DE REGISTRO
+           ============================================================ -->
+      <section class="auth-form-side" aria-label="Formulario de registro">
+        <div class="auth-card">
+
+          <!-- Header -->
+          <header class="auth-card__header">
+            <span class="auth-card__icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+            <h2 class="auth-card__title">Crea tu cuenta</h2>
+            <p class="auth-card__subtitle">Completa el formulario para unirte a StrikeStore</p>
+          </header>
+
+          <!-- Formulario de registro -->
+          <form id="registro-form" novalidate aria-label="Crear cuenta en StrikeStore">
+
+            <!-- Fila 1: Nombre + Teléfono -->
+            <div class="form__row">
+              <!-- Nombre completo -->
+              <div class="form-group">
+                <label for="reg-name" class="form-label">
+                  Nombre completo <span class="required" aria-hidden="true">*</span>
+                </label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-user input-icon" aria-hidden="true"></i>
+                  <input
+                    type="text"
+                    id="reg-name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Tu nombre"
+                    autocomplete="name"
+                    required
+                    aria-required="true"
+                    aria-describedby="name-error"
+                    minlength="2"
+                  />
+                </div>
+                <span id="name-error" class="form-error" role="alert" aria-live="polite" hidden>
+                  <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                  <span></span>
+                </span>
+              </div>
+
+              <!-- Teléfono -->
+              <div class="form-group">
+                <label for="reg-phone" class="form-label">
+                  Teléfono
+                </label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-phone input-icon" aria-hidden="true"></i>
+                  <input
+                    type="tel"
+                    id="reg-phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="+52 55 0000 0000"
+                    autocomplete="tel"
+                    aria-describedby="phone-hint"
+                  />
+                </div>
+                <span id="phone-hint" class="form-hint">Opcional</span>
+              </div>
+            </div>
+
+            <!-- Fila 2: Ciudad / Estado -->
+            <div class="form-group">
+              <label for="reg-city" class="form-label">
+                Ciudad / Estado
+              </label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-location-dot input-icon" aria-hidden="true"></i>
+                <input
+                  type="text"
+                  id="reg-city"
+                  name="city"
+                  class="form-input"
+                  placeholder="Ej: Ciudad de México, CDMX"
+                  autocomplete="address-level2"
+                  aria-describedby="city-hint"
+                />
+              </div>
+              <span id="city-hint" class="form-hint">Opcional — útil para calcular envíos</span>
+            </div>
+
+            <!-- Fila 3: Email -->
+            <div class="form-group">
+              <label for="reg-email" class="form-label">
+                Correo electrónico <span class="required" aria-hidden="true">*</span>
+              </label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-envelope input-icon" aria-hidden="true"></i>
+                <input
+                  type="email"
+                  id="reg-email"
+                  name="email"
+                  class="form-input"
+                  placeholder="tu@correo.com"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="reg-email-error"
+                />
+              </div>
+              <span id="reg-email-error" class="form-error" role="alert" aria-live="polite" hidden>
+                <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                <span></span>
+              </span>
+            </div>
+
+            <!-- Fila 4: Password con indicador de fortaleza -->
+            <div class="form-group">
+              <label for="reg-password" class="form-label">
+                Contraseña <span class="required" aria-hidden="true">*</span>
+              </label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock input-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="reg-password"
+                  name="password"
+                  class="form-input"
+                  placeholder="Mínimo 8 caracteres"
+                  autocomplete="new-password"
+                  required
+                  aria-required="true"
+                  aria-describedby="reg-password-error password-strength-label"
+                  style="padding-right:3rem"
+                />
+                <button
+                  type="button"
+                  class="input-icon-right"
+                  id="toggle-reg-password"
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                  title="Mostrar / ocultar contraseña"
+                >
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+              <!-- Indicador de fortaleza -->
+              <div class="password-strength" id="password-strength-indicator" aria-hidden="true">
+                <div class="password-strength__bars" role="presentation">
+                  <div class="strength-bar" id="strength-bar-1"></div>
+                  <div class="strength-bar" id="strength-bar-2"></div>
+                  <div class="strength-bar" id="strength-bar-3"></div>
+                  <div class="strength-bar" id="strength-bar-4"></div>
+                </div>
+                <span id="password-strength-label" class="password-strength__label" aria-live="polite"></span>
+              </div>
+              <span id="reg-password-error" class="form-error" role="alert" aria-live="polite" hidden>
+                <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                <span></span>
+              </span>
+            </div>
+
+            <!-- Fila 5: Confirmar contraseña -->
+            <div class="form-group">
+              <label for="reg-confirm" class="form-label">
+                Confirmar contraseña <span class="required" aria-hidden="true">*</span>
+              </label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-lock input-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="reg-confirm"
+                  name="confirm"
+                  class="form-input"
+                  placeholder="Repite tu contraseña"
+                  autocomplete="new-password"
+                  required
+                  aria-required="true"
+                  aria-describedby="confirm-error"
+                  style="padding-right:3rem"
+                />
+                <button
+                  type="button"
+                  class="input-icon-right"
+                  id="toggle-confirm-password"
+                  aria-label="Mostrar confirmación de contraseña"
+                  aria-pressed="false"
+                  title="Mostrar / ocultar contraseña"
+                >
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+              <span id="confirm-error" class="form-error" role="alert" aria-live="polite" hidden>
+                <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                <span></span>
+              </span>
+            </div>
+
+            <!-- Términos y condiciones -->
+            <div class="form-group">
+              <label class="form-check" for="reg-terms">
+                <input
+                  type="checkbox"
+                  id="reg-terms"
+                  name="terms"
+                  class="form-check-input"
+                  required
+                  aria-required="true"
+                  aria-describedby="terms-error"
+                />
+                <span class="form-check-label">
+                  Acepto los
+                  <a href="#" class="terms-link" aria-label="Leer términos y condiciones de StrikeStore">términos y condiciones</a>
+                  y la
+                  <a href="#" class="terms-link" aria-label="Leer política de privacidad de StrikeStore">política de privacidad</a>
+                  de StrikeStore
+                </span>
+              </label>
+              <span id="terms-error" class="form-error" role="alert" aria-live="polite" hidden>
+                <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                <span></span>
+              </span>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              id="registro-btn"
+              class="btn btn-primary btn-xl btn-block"
+              aria-label="Crear cuenta en StrikeStore"
+            >
+              <span id="registro-btn-text">
+                <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                Crear Cuenta
+              </span>
+            </button>
+          </form>
+
+          <!-- Footer: enlace a login -->
+          <p class="auth-footer" style="margin-top:var(--space-5)">
+            ¿Ya tienes cuenta?
+            <a href="login.html" aria-label="Ir a la página de inicio de sesión">Iniciar Sesión</a>
+          </p>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/registro.js"></script>
+</body>
+</html>

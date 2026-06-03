@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Detalle de Producto | StrikeStore</title>
+  <meta name="description" id="meta-description" content="Detalle del producto en StrikeStore — equipo de softball de alto rendimiento.">
+  <meta name="keywords" content="softball, equipo, bates, guantes, cascos, StrikeStore">
+
+  <!-- Open Graph (se actualiza con JS) -->
+  <meta property="og:type"        content="product">
+  <meta property="og:site_name"   content="StrikeStore">
+  <meta property="og:title"       id="og-title"       content="Detalle de Producto | StrikeStore">
+  <meta property="og:description" id="og-description" content="Detalle del producto en StrikeStore.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="toast-container"></div>
+  <nav id="navbar"></nav>
+
+  <!-- ── Breadcrumb bar ─────────────────────────────────────────────────── -->
+  <div class="breadcrumb-bar" style="
+    background: var(--gradient-hero);
+    padding: calc(var(--navbar-h) + 1rem) 0 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  ">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Navegación">
+        <a href="index.html" class="breadcrumb-item">
+          <i class="fa-solid fa-house"></i> Inicio
+        </a>
+        <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right"></i></span>
+        <a href="catalogo.html" class="breadcrumb-item">Catálogo</a>
+        <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right"></i></span>
+        <span class="breadcrumb-item active" id="breadcrumb-product" aria-current="page">Producto</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ── Contenido principal ───────────────────────────────────────────── -->
+  <main class="section" id="product-main">
+
+    <!-- Estado de carga (skeleton) -->
+    <div class="container" id="loading-state">
+      <div class="product-detail" style="padding-top:0">
+        <!-- Skeleton imagen -->
+        <div>
+          <div class="skeleton" style="aspect-ratio:1; border-radius:var(--radius-xl)"></div>
+          <div style="display:flex; gap:0.75rem; margin-top:1rem">
+            <div class="skeleton" style="width:72px; height:72px; border-radius:var(--radius-md)"></div>
+            <div class="skeleton" style="width:72px; height:72px; border-radius:var(--radius-md)"></div>
+            <div class="skeleton" style="width:72px; height:72px; border-radius:var(--radius-md)"></div>
+          </div>
+        </div>
+        <!-- Skeleton info -->
+        <div style="display:flex; flex-direction:column; gap:1.25rem; padding-top:1rem">
+          <div class="skeleton skeleton-text" style="width:30%; height:0.8rem"></div>
+          <div class="skeleton skeleton-title" style="width:90%; height:2.5rem"></div>
+          <div class="skeleton skeleton-text" style="width:50%; height:1rem"></div>
+          <div class="skeleton skeleton-text" style="width:25%; height:3rem; border-radius:var(--radius-lg)"></div>
+          <div class="skeleton skeleton-text" style="width:100%; height:5rem; border-radius:var(--radius-md)"></div>
+          <div class="skeleton skeleton-text" style="width:80%; height:1rem"></div>
+          <div class="skeleton skeleton-text" style="width:75%; height:1rem"></div>
+          <div style="display:flex; gap:0.75rem; margin-top:0.5rem">
+            <div class="skeleton skeleton-btn"></div>
+            <div class="skeleton skeleton-btn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido del producto (oculto hasta cargar) -->
+    <div class="container" id="product-content" style="display:none" aria-live="polite"></div>
+
+    <!-- Producto no encontrado -->
+    <div class="container text-center" id="not-found" style="display:none; padding-block:5rem">
+      <i
+        class="fa-solid fa-box-open"
+        aria-hidden="true"
+        style="font-size:5rem; color:var(--color-gray-400); margin-bottom:1.5rem; display:block"
+      ></i>
+      <h2 style="font-family:var(--font-display); font-size:2rem; margin-bottom:0.75rem; color:var(--color-dark)">
+        Producto no encontrado
+      </h2>
+      <p style="color:var(--color-gray-600); margin-bottom:1.5rem; max-width:420px; margin-inline:auto">
+        El producto que buscas no existe o fue eliminado del catálogo.
+      </p>
+      <a href="catalogo.html" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-store" aria-hidden="true"></i>
+        Ver Catálogo Completo
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ── Productos Relacionados ─────────────────────────────────────────── -->
+  <section
+    class="section"
+    id="related-section"
+    style="display:none; background:var(--color-gray-50); border-top:1px solid var(--color-gray-200)"
+    aria-labelledby="related-title"
+  >
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">También te puede gustar</p>
+        <h2 class="section-title" id="related-title">Productos Relacionados</h2>
+        <p class="section-subtitle" id="related-subtitle">Más artículos de la misma categoría.</p>
+      </div>
+      <div id="related-grid" class="product-grid" role="list"></div>
+      <div style="text-align:center; margin-top:2.5rem" class="reveal">
+        <a href="catalogo.html" class="btn btn-outline btn-lg">
+          <i class="fa-solid fa-store" aria-hidden="true"></i>
+          Ver Todo el Catálogo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+
+    <div class="promo-banner">
+      <span class="promo-banner__text">
+        <i class="fa-solid fa-shield-halved" style="margin-right:0.4rem"></i>
+        Garantía de 1 año en todos los productos + 30 días de devolución sin preguntas
+      </span>
+      <a href="catalogo.html" class="promo-banner__cta">Ver Catálogo</a>
+    </div>
+
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-brand__logo">
+            <span style="font-size:2rem">🥎</span>
+            <span class="footer-brand__name">StrikeStore</span>
+          </div>
+          <p class="footer-brand__description">
+            Tu tienda especializada en equipo de softball de alto rendimiento. Equipamos a jugadores desde principiantes hasta élite.
+          </p>
+          <div class="footer-brand__social">
+            <a href="#" class="social-link" aria-label="Facebook" title="Síguenos en Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram" title="Síguenos en Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter / X" title="Síguenos en Twitter">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube" title="Canal de YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tienda -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Tienda</h3>
+          <ul class="footer-links">
+            <li><a href="catalogo.html" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Todos los Productos</a></li>
+            <li><a href="catalogo.html?tipo=new" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Nuevos Arrivals</a></li>
+            <li><a href="catalogo.html?tipo=sale" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Ofertas</a></li>
+            <li><a href="catalogo.html?tipo=featured" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Destacados</a></li>
+            <li><a href="catalogo.html?categoria=bates" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Bates</a></li>
+            <li><a href="catalogo.html?categoria=guantes" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Guantes</a></li>
+          </ul>
+        </div>
+
+        <!-- Cuenta -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Mi Cuenta</h3>
+          <ul class="footer-links">
+            <li><a href="login.html" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Iniciar Sesión</a></li>
+            <li><a href="registro.html" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Crear Cuenta</a></li>
+            <li><a href="perfil.html" class="footer-link"><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i> Mi Perfil</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Contacto</h3>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Av. del Diamante 420<br>Ciudad de México, MX</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+52 (55) 1234-5678</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>hola@strikestore.mx</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <span>Lun–Vie 9:00 – 18:00</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          &copy; 2025 <span>StrikeStore</span>. Todos los derechos reservados.
+        </p>
+        <div class="footer-bottom__links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Volver arriba" title="Volver arriba">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/product.js"></script>
+
+</body>
+</html>
